@@ -12,6 +12,8 @@
     import { link } from "svelte-routing";
     import InfiniteScroll from "svelte-infinite-scroll";
 
+    const URI_HEADER = "/animevost-web";
+
     let page = 1;
     let animes = [];
 
@@ -21,7 +23,10 @@
 
     async function getAnimes() {
         const response = await fetch(
-            `https://api.animevost.org/v1/last?page=${page}&quantity=10`
+            `https://api.animevost.org/v1/last?page=${page}&quantity=10`,
+            {
+                mode: "cors", // 'cors' by default
+            }
         );
         const json = await response.json();
         return json.data;
@@ -33,7 +38,7 @@
         <Card style="border: 0">
             <Row>
                 <Col class="col-md-auto">
-                    <a href={`/anime/${anime.id}`} use:link>
+                    <a href={`${URI_HEADER}/anime/${anime.id}`} use:link>
                         <Image
                             src={anime.urlImagePreview}
                             class="float-start"
@@ -42,7 +47,7 @@
                     </a>
                 </Col>
                 <Col>
-                    <a href={`/anime/${anime.id}`} use:link>
+                    <a href={`${URI_HEADER}/anime/${anime.id}`} use:link>
                         <h4>
                             {anime.title}
                         </h4>

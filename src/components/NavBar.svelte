@@ -4,9 +4,10 @@
 
     export let name = "Animevost";
 
-    let dispatcher = createEventDispatcher()
-
+    const URI_HEADER = "/animevost-web";
     let searchInput = "";
+
+    let dispatcher = createEventDispatcher()
 
     function handleInput() {
         const trimmedText = searchInput.trim();
@@ -19,7 +20,7 @@
 </script>
 
 <Navbar color="light" light class="fixed-top">
-    <NavbarBrand>{name}</NavbarBrand>
+    <NavbarBrand href={`${URI_HEADER}/`}>{name}</NavbarBrand>
 
     <FormGroup style="margin-bottom: 0!important">
         <Input
