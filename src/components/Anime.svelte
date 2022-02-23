@@ -79,7 +79,7 @@
             {#each series as seria (seria.name)}
                 {#if seria.name === selectedSeria.name}
                     <Button
-                        class="me-3"
+                        class="me-3 mb-3"
                         primary
                         on:click={() => seriesHandler(seria)}
                     >
@@ -87,7 +87,7 @@
                     </Button>
                 {:else}
                     <Button
-                        class="me-3"
+                        class="me-3 mb-3"
                         outline
                         primary
                         on:click={() => seriesHandler(seria)}
