@@ -62,7 +62,7 @@
 </script>
 
 {#if isLoaded}
-    <div style="width:800px" class="mx-auto">
+    <div style="max-width:800px" class="mx-auto">
         <h1>{selectedSeria.name}</h1>
         <VideoPlayer
             poster={selectedSeria.preview}
@@ -79,7 +79,7 @@
             {#each series as seria (seria.name)}
                 {#if seria.name === selectedSeria.name}
                     <Button
-                        class="me-3 mb-3"
+                        class="me-2 mb-1 mt-1"
                         primary
                         on:click={() => seriesHandler(seria)}
                     >
@@ -87,7 +87,7 @@
                     </Button>
                 {:else}
                     <Button
-                        class="me-3 mb-3"
+                        class="me-2 mb-1 mt-1"
                         outline
                         primary
                         on:click={() => seriesHandler(seria)}
