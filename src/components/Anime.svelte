@@ -1,8 +1,11 @@
 <script>
-    export let animeId;
     import { onMount } from "svelte";
-    import VideoPlayer from "svelte-video-player";
+    import { Player, DefaultUi } from "@vime/svelte";
     import { Accordion, Button, AccordionItem, Badge } from "sveltestrap";
+    import { apiUrl } from "../config";
+
+    export let currentRoute;
+    let animeId = currentRoute.namedParams.id;
 
     let animeInfo = {};
     let series = [];
@@ -14,11 +17,10 @@
         series = await getAnimePlaylist(animeId);
         selectedSeria = series[0];
         isLoaded = true;
-        console.log(document.body.clientHeight);
     });
 
     async function getAnimeInfo(id) {
-        const response = await fetch("https://api.animevost.org/v1/info", {
+        const response = await fetch(`${apiUrl}/info`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -36,7 +38,7 @@
     }
 
     async function getAnimePlaylist(id) {
-        const response = await fetch("https://api.animevost.org/v1/playlist", {
+        const response = await fetch(`${apiUrl}/playlist`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -64,15 +66,31 @@
 {#if isLoaded}
     <div style="max-width:800px" class="mx-auto">
         <h1>{selectedSeria.name}</h1>
-        <VideoPlayer
+        <!-- <VideoPlayer
             poster={selectedSeria.preview}
-            source={selectedSeria.hd ? selectedSeria.hd: selectedSeria.std}
+            source={selectedSeria.hd ? selectedSeria.hd : selectedSeria.std}
             skipSeconds="10"
             timeDisplay="true"
             color="#0c63e4"
             chunkBars="true"
             bufferedColor="#0c63e4"
-        />
+        /> -->
+        <div style="max-width:800px">
+            <Player>
+                <vm-video poster={selectedSeria.preview}>
+                    <!-- These are passed directly to the underlying HTML5 `<video>` element. -->
+                    <!-- Why `data-src`? Lazy loading, you can always use `src` if you prefer.  -->
+                    <source
+                        data-src={selectedSeria.std
+                            ? selectedSeria.std
+                            : selectedSeria.std}
+                        type="video/mp4"
+                    />
+                    <track kind="captions" />
+                </vm-video>
+                <DefaultUi noDblClickFullscreen />
+            </Player>
+        </div>
     </div>
     <Accordion flush stayOpen class="mt-3">
         <AccordionItem active header="Серии">
@@ -103,13 +121,15 @@
         <AccordionItem active header="Жанр">
             <h5>
                 {#each animeInfo.genre.split(",") as gen}
-                    <Badge class="me-1" primary>{gen.trim()}</Badge>
+                    <Badge class="me-2 mb-1 mt-1" primary>{gen.trim()}</Badge>
                 {/each}
             </h5>
         </AccordionItem>
-        <AccordionItem active header="Создатель">
-            {animeInfo.director}
-        </AccordionItem>
+        {#if animeInfo.director}
+            <AccordionItem active header="Создатель">
+                {animeInfo.director}
+            </AccordionItem>
+        {/if}
         <AccordionItem active header="Описание">
             {@html animeInfo.description}
         </AccordionItem>

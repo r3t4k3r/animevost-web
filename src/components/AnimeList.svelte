@@ -9,10 +9,9 @@
         Badge,
     } from "sveltestrap";
     import { onMount } from "svelte";
-    import { link } from "svelte-routing";
+    import { Navigate } from "svelte-router-spa";
     import InfiniteScroll from "svelte-infinite-scroll";
-
-    const URI_HEADER = "/animevost-web";
+    import { uriHeader, apiUrl } from "../config";
 
     let page = 1;
     let animes = [];
@@ -23,7 +22,7 @@
 
     async function getAnimes() {
         const response = await fetch(
-            `https://api.animevost.org/v1/last?page=${page}&quantity=10`,
+            `${apiUrl}/last?page=${page}&quantity=10`,
             {
                 mode: "cors", // 'cors' by default
             }
@@ -33,47 +32,48 @@
     }
 </script>
 
-<div class="d-grid gap-3 mt-3 mb-3">
-    {#each animes as anime (anime.id)}
-        <Card style="border: 0">
-            <Row>
-                <Col class="col-md-auto">
-                    <a href={`${URI_HEADER}/anime/${anime.id}`} use:link>
-                        <Image
-                            src={anime.urlImagePreview}
-                            class="float-start"
-                            style="height: 300px; width: 200px;"
-                        />
-                    </a>
-                </Col>
-                <Col>
-                    <a href={`${URI_HEADER}/anime/${anime.id}`} use:link>
-                        <h4>
-                            {anime.title}
-                        </h4>
-                    </a>
-                    <Accordion flush stayOpen>
-                        <AccordionItem active header="Год выпуска">
-                            {anime.year}
-                        </AccordionItem>
-                        <AccordionItem active header="Жанр">
-                            <h5>
-                                {#each anime.genre.split(",") as gen}
-                                    <Badge class="me-1" primary
-                                        >{gen.trim()}</Badge
-                                    >
-                                {/each}
-                            </h5>
-                        </AccordionItem>
-                        <AccordionItem header="Описание">
-                            {@html anime.description}
-                        </AccordionItem>
-                    </Accordion>
-                    <br />
-                </Col>
-            </Row>
-        </Card>
-    {/each}
+<div class="d-grid gap-4 mt-3 mb-3">
+    {#if animes.length > 0}
+        {#each animes as anime (anime.id)}
+            <Card>
+                <Row>
+                    <Col class="col-md-auto">
+                        <Navigate to={`${uriHeader}/anime/${anime.id}`}>
+                            <Image
+                                src={anime.urlImagePreview}
+                                class="float-start"
+                                style="height: 300px; width: 200px; border-radius: .25rem"
+                            />
+                        </Navigate>
+                    </Col>
+                    <Col>
+                        <Navigate to={`${uriHeader}/anime/${anime.id}`}>
+                            <h4>{anime.title}</h4>
+                        </Navigate>
+                        <Accordion flush stayOpen>
+                            <AccordionItem header="Год выпуска">
+                                {anime.year}
+                            </AccordionItem>
+                            <AccordionItem header="Жанр">
+                                <h5>
+                                    {#each anime.genre.split(",") as gen}
+                                        <Badge class="me-2 mb-1 mt-1" primary
+                                            >{gen.trim()}</Badge
+                                        >
+                                    {/each}
+                                </h5>
+                            </AccordionItem>
+                            <AccordionItem header="Описание">
+                                {@html anime.description}
+                            </AccordionItem>
+                        </Accordion>
+                    </Col>
+                </Row>
+            </Card>
+        {/each}
+    {:else}
+        loading
+    {/if}
 </div>
 <InfiniteScroll
     hasMore={animes.length}
