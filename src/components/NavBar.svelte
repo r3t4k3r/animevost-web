@@ -8,6 +8,7 @@
     function handleInput() {
         const trimmedText = searchInput.trim();
         if (trimmedText !== "") {
+            searchInput=""
             navigateTo(`${uriHeader}/search/${trimmedText}`);
         }
     }
@@ -20,7 +21,7 @@
         <Input
             type="search"
             name="search"
-            placeholder="ваше любимое аниме"
+            placeholder="найдите любимое аниме"
             bind:value={searchInput}
             on:change={handleInput}
         />

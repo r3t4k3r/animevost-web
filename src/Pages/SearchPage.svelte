@@ -14,6 +14,7 @@
 
     async function searchAnimeByName(name) {
         try {
+            animeFound = true;
             const response = await fetch(`${apiUrl}/search`, {
                 method: "POST",
                 headers: {
@@ -23,7 +24,6 @@
                 body: `name=${name}`,
             });
             const json = await response.json();
-            animeFound = true;
             return json.data;
         } catch (e) {
             animeFound = false;
