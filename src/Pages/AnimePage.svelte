@@ -15,6 +15,7 @@
 
     let duration = -1;
     let currentTime = 0;
+    let paused = true;
 
     let animeInfo = {};
     let series = [];
@@ -72,12 +73,16 @@
     }
 
     function keydownHandler(event) {
-        switch (event.key) {
+        event.preventDefault();
+        switch (event.code) {
             case "ArrowLeft":
                 currentTime = currentTime - 10;
                 break;
             case "ArrowRight":
                 currentTime = currentTime + 10;
+                break;
+            case "Space":
+                paused = !paused;
                 break;
         }
     }
@@ -103,6 +108,7 @@
                     on:vmCurrentTimeChange={onTimeUpdate}
                     {currentTime}
                     {duration}
+                    {paused}
                     volume={70}
                 >
                     <vm-video poster={selectedSeria.preview}>
