@@ -1,23 +1,19 @@
 <script>
     import { FormGroup, Navbar, NavbarBrand, Input } from "sveltestrap";
-    import { createEventDispatcher } from "svelte";
     import { uriHeader } from "../config";
+    import { navigateTo } from 'svelte-router-spa'
 
     let searchInput = "";
-
-    let dispatcher = createEventDispatcher();
 
     function handleInput() {
         const trimmedText = searchInput.trim();
         if (trimmedText !== "") {
-            dispatcher("search", {
-                text: trimmedText,
-            });
+            navigateTo(`${uriHeader}/search/${trimmedText}`);
         }
     }
 </script>
 
-<Navbar color="light" light class="fixed-top">
+<Navbar color="dark" light class="fixed-top">
     <NavbarBrand href={`/${uriHeader}`}>Animevost</NavbarBrand>
 
     <FormGroup style="margin-bottom: 0!important">

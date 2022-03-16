@@ -1,11 +1,20 @@
 <script>
     import { onMount } from "svelte";
     import { Player, DefaultUi } from "@vime/svelte";
-    import { Accordion, Button, AccordionItem, Badge } from "sveltestrap";
+    import {
+        Accordion,
+        Button,
+        AccordionItem,
+        Badge,
+        Spinner,
+    } from "sveltestrap";
     import { apiUrl } from "../config";
 
     export let currentRoute;
     let animeId = currentRoute.namedParams.id;
+
+    let duration = -1;
+    let currentTime = 0;
 
     let animeInfo = {};
     let series = [];
@@ -15,7 +24,7 @@
     onMount(async () => {
         animeInfo = await getAnimeInfo(animeId);
         series = await getAnimePlaylist(animeId);
-        selectedSeria = series[0];
+        selectedSeria = series[0] || [];
         isLoaded = true;
     });
 
@@ -58,63 +67,79 @@
         return json;
     }
 
+    function onTimeUpdate(event) {
+        currentTime = event.detail;
+    }
+
+    function keydownHandler(event) {
+        switch (event.key) {
+            case "ArrowLeft":
+                currentTime = currentTime - 10;
+                break;
+            case "ArrowRight":
+                currentTime = currentTime + 10;
+                break;
+        }
+    }
+
     function seriesHandler(seria) {
         selectedSeria = seria;
     }
 </script>
 
+<svelte:window on:keydown={keydownHandler} />
+
 {#if isLoaded}
+    <h4>
+        {animeInfo.title}
+        <Badge class="me-2 mb-1 mt-1"
+            >{selectedSeria.name || "Нет серий, Анонс?"}</Badge
+        >
+    </h4>
     <div style="max-width:800px" class="mx-auto">
-        <h1>{selectedSeria.name}</h1>
-        <!-- <VideoPlayer
-            poster={selectedSeria.preview}
-            source={selectedSeria.hd ? selectedSeria.hd : selectedSeria.std}
-            skipSeconds="10"
-            timeDisplay="true"
-            color="#0c63e4"
-            chunkBars="true"
-            bufferedColor="#0c63e4"
-        /> -->
-        <div style="max-width:800px">
-            <Player>
-                <vm-video poster={selectedSeria.preview}>
-                    <!-- These are passed directly to the underlying HTML5 `<video>` element. -->
-                    <!-- Why `data-src`? Lazy loading, you can always use `src` if you prefer.  -->
-                    <source
-                        data-src={selectedSeria.std
-                            ? selectedSeria.std
-                            : selectedSeria.std}
-                        type="video/mp4"
-                    />
-                    <track kind="captions" />
-                </vm-video>
-                <DefaultUi noDblClickFullscreen />
-            </Player>
-        </div>
+        {#if series.length > 0}
+            <div style="max-width:800px">
+                <Player
+                    on:vmCurrentTimeChange={onTimeUpdate}
+                    {currentTime}
+                    {duration}
+                    volume={70}
+                >
+                    <vm-video poster={selectedSeria.preview}>
+                        <source data-src={selectedSeria.std} type="video/mp4" />
+                        <track kind="captions" />
+                    </vm-video>
+                    <DefaultUi noDblClickFullscreen />
+                </Player>
+            </div>
+        {/if}
     </div>
     <Accordion flush stayOpen class="mt-3">
-        <AccordionItem active header="Серии">
-            {#each series as seria (seria.name)}
-                {#if seria.name === selectedSeria.name}
-                    <Button
-                        class="me-2 mb-1 mt-1"
-                        primary
-                        on:click={() => seriesHandler(seria)}
-                    >
-                        {seria.name}
-                    </Button>
-                {:else}
-                    <Button
-                        class="me-2 mb-1 mt-1"
-                        outline
-                        primary
-                        on:click={() => seriesHandler(seria)}
-                    >
-                        {seria.name}
-                    </Button>
-                {/if}
-            {/each}
-        </AccordionItem>
+        {#if series.length > 0}
+            <AccordionItem active header="Серии">
+                {#each series as seria (seria.name)}
+                    {#if seria.name === selectedSeria.name}
+                        <!-- если эта серия выбрана -->
+                        <Button
+                            class="me-2 mb-1 mt-1"
+                            primary
+                            on:click={() => seriesHandler(seria)}
+                        >
+                            {seria.name}
+                        </Button>
+                    {:else}
+                        <Button
+                            class="me-2 mb-1 mt-1"
+                            outline
+                            secondary
+                            on:click={() => seriesHandler(seria)}
+                        >
+                            {seria.name}
+                        </Button>
+                    {/if}
+                {/each}
+            </AccordionItem>
+        {/if}
         <AccordionItem active header="Год выпуска">
             {animeInfo.year}
         </AccordionItem>
@@ -134,4 +159,6 @@
             {@html animeInfo.description}
         </AccordionItem>
     </Accordion>
+{:else}
+    <h2>loading <Spinner color="primary" /></h2>
 {/if}

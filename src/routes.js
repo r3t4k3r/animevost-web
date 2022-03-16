@@ -1,21 +1,27 @@
-import AnimeList from "./components/AnimeList.svelte";
-import Anime from "./components/Anime.svelte";
-import NotFound from "./components/NotFound.svelte";
+import AnimeListPage from "./Pages/AnimeListPage.svelte";
+import AnimePage from "./Pages/AnimePage.svelte";
+import NotFoundPage from "./Pages/NotFoundPage.svelte";
+import SearchPage from "./Pages/SearchPage.svelte";
+
 import { uriHeader } from "./config"
 
 const routes = [
     {
         name: `${uriHeader}/`,
-        component: AnimeList
+        component: AnimeListPage
     },
     {
         name: `${uriHeader}/anime/:id`,
-        component: Anime
+        component: AnimePage
+    },
+    {
+        name: `${uriHeader}/search/:name`,
+        component: SearchPage
     },
     {
         name: '404',
-        path: '404',
-        component: NotFound
+        path: '/404',
+        component: NotFoundPage
     }
 ]
 
