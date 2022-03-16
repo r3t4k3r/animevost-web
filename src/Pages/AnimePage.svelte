@@ -15,7 +15,7 @@
 
     let duration = -1;
     let currentTime = 0;
-    let paused = true;
+    let paused = false;
 
     let animeInfo = {};
     let series = [];
