@@ -13042,7 +13042,7 @@ var app = (function () {
     	return block;
     }
 
-    // (17:0) <Navbar color="dark" light class="fixed-top">
+    // (17:0) <Navbar color="dark" dark class="fixed-top">
     function create_default_slot$3(ctx) {
     	let navbarbrand;
     	let t;
@@ -13117,7 +13117,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(17:0) <Navbar color=\\\"dark\\\" light class=\\\"fixed-top\\\">",
+    		source: "(17:0) <Navbar color=\\\"dark\\\" dark class=\\\"fixed-top\\\">",
     		ctx
     	});
 
@@ -13133,7 +13133,7 @@ var app = (function () {
     	navbar = new Navbar({
     			props: {
     				color: "dark",
-    				light: true,
+    				dark: true,
     				class: "fixed-top",
     				$$slots: { default: [create_default_slot$3] },
     				$$scope: { ctx }
@@ -13147,7 +13147,7 @@ var app = (function () {
     			t = space();
     			div = element("div");
     			set_style(div, "margin-bottom", "5em");
-    			add_location(div, file$7, 29, 0, 819);
+    			add_location(div, file$7, 29, 0, 818);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

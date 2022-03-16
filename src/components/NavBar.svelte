@@ -14,7 +14,7 @@
     }
 </script>
 
-<Navbar color="dark" light class="fixed-top">
+<Navbar color="dark" dark class="fixed-top">
     <NavbarBrand href={`/${uriHeader}`}>Animevost</NavbarBrand>
 
     <FormGroup style="margin-bottom: 0!important">
