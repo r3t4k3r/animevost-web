@@ -27058,17 +27058,17 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[15] = list[i];
+    	child_ctx[16] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
+    	child_ctx[19] = list[i];
     	return child_ctx;
     }
 
-    // (162:0) {:else}
+    // (168:0) {:else}
     function create_else_block_1(ctx) {
     	let h2;
     	let t;
@@ -27085,7 +27085,7 @@ var app = (function () {
     			h2 = element("h2");
     			t = text("loading ");
     			create_component(spinner.$$.fragment);
-    			add_location(h2, file$2, 162, 4, 5535);
+    			add_location(h2, file$2, 168, 4, 5703);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -27113,17 +27113,17 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(162:0) {:else}",
+    		source: "(168:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:0) {#if isLoaded}
+    // (97:0) {#if isLoaded}
     function create_if_block$1(ctx) {
     	let h4;
-    	let t0_value = /*animeInfo*/ ctx[1].title + "";
+    	let t0_value = /*animeInfo*/ ctx[2].title + "";
     	let t0;
     	let t1;
     	let badge;
@@ -27142,7 +27142,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block = /*series*/ ctx[2].length > 0 && create_if_block_4(ctx);
+    	let if_block = /*series*/ ctx[3].length > 0 && create_if_block_4(ctx);
 
     	accordion = new Accordion({
     			props: {
@@ -27166,10 +27166,10 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t3 = space();
     			create_component(accordion.$$.fragment);
-    			add_location(h4, file$2, 92, 4, 3001);
+    			add_location(h4, file$2, 97, 4, 3140);
     			set_style(div, "max-width", "800px");
     			attr_dev(div, "class", "mx-auto");
-    			add_location(div, file$2, 98, 4, 3158);
+    			add_location(div, file$2, 103, 4, 3297);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -27184,20 +27184,20 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*animeInfo*/ 2) && t0_value !== (t0_value = /*animeInfo*/ ctx[1].title + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*animeInfo*/ 4) && t0_value !== (t0_value = /*animeInfo*/ ctx[2].title + "")) set_data_dev(t0, t0_value);
     			const badge_changes = {};
 
-    			if (dirty & /*$$scope, selectedSeria*/ 2097168) {
+    			if (dirty & /*$$scope, selectedSeria*/ 4194336) {
     				badge_changes.$$scope = { dirty, ctx };
     			}
 
     			badge.$set(badge_changes);
 
-    			if (/*series*/ ctx[2].length > 0) {
+    			if (/*series*/ ctx[3].length > 0) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty & /*series*/ 4) {
+    					if (dirty & /*series*/ 8) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -27218,7 +27218,7 @@ var app = (function () {
 
     			const accordion_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo, series, selectedSeria*/ 2097174) {
+    			if (dirty & /*$$scope, animeInfo, series, selectedSeria*/ 4194348) {
     				accordion_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27252,16 +27252,16 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(92:0) {#if isLoaded}",
+    		source: "(97:0) {#if isLoaded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:8) <Badge class="me-2 mb-1 mt-1"             >
+    // (100:8) <Badge class="me-2 mb-1 mt-1"             >
     function create_default_slot_10(ctx) {
-    	let t_value = (/*selectedSeria*/ ctx[4].name || "Нет серий, Анонс?") + "";
+    	let t_value = (/*selectedSeria*/ ctx[5].name || "Нет серий, Анонс?") + "";
     	let t;
 
     	const block = {
@@ -27272,7 +27272,7 @@ var app = (function () {
     			insert_dev(target, t, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*selectedSeria*/ 16 && t_value !== (t_value = (/*selectedSeria*/ ctx[4].name || "Нет серий, Анонс?") + "")) set_data_dev(t, t_value);
+    			if (dirty & /*selectedSeria*/ 32 && t_value !== (t_value = (/*selectedSeria*/ ctx[5].name || "Нет серий, Анонс?") + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t);
@@ -27283,14 +27283,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_10.name,
     		type: "slot",
-    		source: "(95:8) <Badge class=\\\"me-2 mb-1 mt-1\\\"             >",
+    		source: "(100:8) <Badge class=\\\"me-2 mb-1 mt-1\\\"             >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:8) {#if series.length > 0}
+    // (105:8) {#if series.length > 0}
     function create_if_block_4(ctx) {
     	let div;
     	let player;
@@ -27299,7 +27299,8 @@ var app = (function () {
     	player = new Player({
     			props: {
     				currentTime: /*currentTime*/ ctx[0],
-    				duration: /*duration*/ ctx[5],
+    				duration: /*duration*/ ctx[6],
+    				paused: /*paused*/ ctx[1],
     				volume: 70,
     				$$slots: { default: [create_default_slot_9] },
     				$$scope: { ctx }
@@ -27307,14 +27308,14 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	player.$on("vmCurrentTimeChange", /*onTimeUpdate*/ ctx[6]);
+    	player.$on("vmCurrentTimeChange", /*onTimeUpdate*/ ctx[7]);
 
     	const block = {
     		c: function create() {
     			div = element("div");
     			create_component(player.$$.fragment);
     			set_style(div, "max-width", "800px");
-    			add_location(div, file$2, 100, 12, 3248);
+    			add_location(div, file$2, 105, 12, 3387);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -27324,8 +27325,9 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const player_changes = {};
     			if (dirty & /*currentTime*/ 1) player_changes.currentTime = /*currentTime*/ ctx[0];
+    			if (dirty & /*paused*/ 2) player_changes.paused = /*paused*/ ctx[1];
 
-    			if (dirty & /*$$scope, selectedSeria*/ 2097168) {
+    			if (dirty & /*$$scope, selectedSeria*/ 4194336) {
     				player_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27350,14 +27352,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(100:8) {#if series.length > 0}",
+    		source: "(105:8) {#if series.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (102:16) <Player                     on:vmCurrentTimeChange={onTimeUpdate}                     {currentTime}                     {duration}                     volume={70}                 >
+    // (107:16) <Player                     on:vmCurrentTimeChange={onTimeUpdate}                     {currentTime}                     {duration}                     {paused}                     volume={70}                 >
     function create_default_slot_9(ctx) {
     	let vm_video;
     	let source;
@@ -27382,13 +27384,13 @@ var app = (function () {
     			track = element("track");
     			t1 = space();
     			create_component(defaultui.$$.fragment);
-    			attr_dev(source, "data-src", source_data_src_value = /*selectedSeria*/ ctx[4].std);
+    			attr_dev(source, "data-src", source_data_src_value = /*selectedSeria*/ ctx[5].std);
     			attr_dev(source, "type", "video/mp4");
-    			add_location(source, file$2, 108, 24, 3561);
+    			add_location(source, file$2, 114, 24, 3729);
     			attr_dev(track, "kind", "captions");
-    			add_location(track, file$2, 109, 24, 3642);
-    			set_custom_element_data(vm_video, "poster", vm_video_poster_value = /*selectedSeria*/ ctx[4].preview);
-    			add_location(vm_video, file$2, 107, 20, 3495);
+    			add_location(track, file$2, 115, 24, 3810);
+    			set_custom_element_data(vm_video, "poster", vm_video_poster_value = /*selectedSeria*/ ctx[5].preview);
+    			add_location(vm_video, file$2, 113, 20, 3663);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, vm_video, anchor);
@@ -27400,11 +27402,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*selectedSeria*/ 16 && source_data_src_value !== (source_data_src_value = /*selectedSeria*/ ctx[4].std)) {
+    			if (!current || dirty & /*selectedSeria*/ 32 && source_data_src_value !== (source_data_src_value = /*selectedSeria*/ ctx[5].std)) {
     				attr_dev(source, "data-src", source_data_src_value);
     			}
 
-    			if (!current || dirty & /*selectedSeria*/ 16 && vm_video_poster_value !== (vm_video_poster_value = /*selectedSeria*/ ctx[4].preview)) {
+    			if (!current || dirty & /*selectedSeria*/ 32 && vm_video_poster_value !== (vm_video_poster_value = /*selectedSeria*/ ctx[5].preview)) {
     				set_custom_element_data(vm_video, "poster", vm_video_poster_value);
     			}
     		},
@@ -27428,14 +27430,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_9.name,
     		type: "slot",
-    		source: "(102:16) <Player                     on:vmCurrentTimeChange={onTimeUpdate}                     {currentTime}                     {duration}                     volume={70}                 >",
+    		source: "(107:16) <Player                     on:vmCurrentTimeChange={onTimeUpdate}                     {currentTime}                     {duration}                     {paused}                     volume={70}                 >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:8) {#if series.length > 0}
+    // (124:8) {#if series.length > 0}
     function create_if_block_2(ctx) {
     	let accordionitem;
     	let current;
@@ -27461,7 +27463,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const accordionitem_changes = {};
 
-    			if (dirty & /*$$scope, series, selectedSeria*/ 2097172) {
+    			if (dirty & /*$$scope, series, selectedSeria*/ 4194344) {
     				accordionitem_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27485,20 +27487,20 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(118:8) {#if series.length > 0}",
+    		source: "(124:8) {#if series.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (130:20) {:else}
+    // (136:20) {:else}
     function create_else_block$1(ctx) {
     	let button;
     	let current;
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[11](/*seria*/ ctx[18]);
+    		return /*click_handler_1*/ ctx[12](/*seria*/ ctx[19]);
     	}
 
     	button = new Button({
@@ -27526,7 +27528,7 @@ var app = (function () {
     			ctx = new_ctx;
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, series*/ 2097156) {
+    			if (dirty & /*$$scope, series*/ 4194312) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27550,20 +27552,20 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(130:20) {:else}",
+    		source: "(136:20) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:20) {#if seria.name === selectedSeria.name}
+    // (127:20) {#if seria.name === selectedSeria.name}
     function create_if_block_3(ctx) {
     	let button;
     	let current;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[10](/*seria*/ ctx[18]);
+    		return /*click_handler*/ ctx[11](/*seria*/ ctx[19]);
     	}
 
     	button = new Button({
@@ -27590,7 +27592,7 @@ var app = (function () {
     			ctx = new_ctx;
     			const button_changes = {};
 
-    			if (dirty & /*$$scope, series*/ 2097156) {
+    			if (dirty & /*$$scope, series*/ 4194312) {
     				button_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27614,16 +27616,16 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(121:20) {#if seria.name === selectedSeria.name}",
+    		source: "(127:20) {#if seria.name === selectedSeria.name}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:24) <Button                             class="me-2 mb-1 mt-1"                             outline                             secondary                             on:click={() => seriesHandler(seria)}                         >
+    // (137:24) <Button                             class="me-2 mb-1 mt-1"                             outline                             secondary                             on:click={() => seriesHandler(seria)}                         >
     function create_default_slot_8(ctx) {
-    	let t0_value = /*seria*/ ctx[18].name + "";
+    	let t0_value = /*seria*/ ctx[19].name + "";
     	let t0;
     	let t1;
 
@@ -27637,7 +27639,7 @@ var app = (function () {
     			insert_dev(target, t1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*series*/ 4 && t0_value !== (t0_value = /*seria*/ ctx[18].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*series*/ 8 && t0_value !== (t0_value = /*seria*/ ctx[19].name + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t0);
@@ -27649,16 +27651,16 @@ var app = (function () {
     		block,
     		id: create_default_slot_8.name,
     		type: "slot",
-    		source: "(131:24) <Button                             class=\\\"me-2 mb-1 mt-1\\\"                             outline                             secondary                             on:click={() => seriesHandler(seria)}                         >",
+    		source: "(137:24) <Button                             class=\\\"me-2 mb-1 mt-1\\\"                             outline                             secondary                             on:click={() => seriesHandler(seria)}                         >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (123:24) <Button                             class="me-2 mb-1 mt-1"                             primary                             on:click={() => seriesHandler(seria)}                         >
+    // (129:24) <Button                             class="me-2 mb-1 mt-1"                             primary                             on:click={() => seriesHandler(seria)}                         >
     function create_default_slot_7(ctx) {
-    	let t0_value = /*seria*/ ctx[18].name + "";
+    	let t0_value = /*seria*/ ctx[19].name + "";
     	let t0;
     	let t1;
 
@@ -27672,7 +27674,7 @@ var app = (function () {
     			insert_dev(target, t1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*series*/ 4 && t0_value !== (t0_value = /*seria*/ ctx[18].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*series*/ 8 && t0_value !== (t0_value = /*seria*/ ctx[19].name + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t0);
@@ -27684,14 +27686,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_7.name,
     		type: "slot",
-    		source: "(123:24) <Button                             class=\\\"me-2 mb-1 mt-1\\\"                             primary                             on:click={() => seriesHandler(seria)}                         >",
+    		source: "(129:24) <Button                             class=\\\"me-2 mb-1 mt-1\\\"                             primary                             on:click={() => seriesHandler(seria)}                         >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:16) {#each series as seria (seria.name)}
+    // (126:16) {#each series as seria (seria.name)}
     function create_each_block_1(key_1, ctx) {
     	let first;
     	let current_block_type_index;
@@ -27702,7 +27704,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*seria*/ ctx[18].name === /*selectedSeria*/ ctx[4].name) return 0;
+    		if (/*seria*/ ctx[19].name === /*selectedSeria*/ ctx[5].name) return 0;
     		return 1;
     	}
 
@@ -27772,22 +27774,22 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(120:16) {#each series as seria (seria.name)}",
+    		source: "(126:16) {#each series as seria (seria.name)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (119:12) <AccordionItem active header="Серии">
+    // (125:12) <AccordionItem active header="Серии">
     function create_default_slot_6(ctx) {
     	let each_blocks = [];
     	let each_1_lookup = new Map();
     	let each_1_anchor;
     	let current;
-    	let each_value_1 = /*series*/ ctx[2];
+    	let each_value_1 = /*series*/ ctx[3];
     	validate_each_argument(each_value_1);
-    	const get_key = ctx => /*seria*/ ctx[18].name;
+    	const get_key = ctx => /*seria*/ ctx[19].name;
     	validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -27813,8 +27815,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*seriesHandler, series, selectedSeria*/ 276) {
-    				each_value_1 = /*series*/ ctx[2];
+    			if (dirty & /*seriesHandler, series, selectedSeria*/ 552) {
+    				each_value_1 = /*series*/ ctx[3];
     				validate_each_argument(each_value_1);
     				group_outros();
     				validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
@@ -27851,16 +27853,16 @@ var app = (function () {
     		block,
     		id: create_default_slot_6.name,
     		type: "slot",
-    		source: "(119:12) <AccordionItem active header=\\\"Серии\\\">",
+    		source: "(125:12) <AccordionItem active header=\\\"Серии\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (143:8) <AccordionItem active header="Год выпуска">
+    // (149:8) <AccordionItem active header="Год выпуска">
     function create_default_slot_5(ctx) {
-    	let t_value = /*animeInfo*/ ctx[1].year + "";
+    	let t_value = /*animeInfo*/ ctx[2].year + "";
     	let t;
 
     	const block = {
@@ -27871,7 +27873,7 @@ var app = (function () {
     			insert_dev(target, t, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*animeInfo*/ 2 && t_value !== (t_value = /*animeInfo*/ ctx[1].year + "")) set_data_dev(t, t_value);
+    			if (dirty & /*animeInfo*/ 4 && t_value !== (t_value = /*animeInfo*/ ctx[2].year + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t);
@@ -27882,16 +27884,16 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(143:8) <AccordionItem active header=\\\"Год выпуска\\\">",
+    		source: "(149:8) <AccordionItem active header=\\\"Год выпуска\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (149:20) <Badge class="me-2 mb-1 mt-1" primary>
+    // (155:20) <Badge class="me-2 mb-1 mt-1" primary>
     function create_default_slot_4(ctx) {
-    	let t_value = /*gen*/ ctx[15].trim() + "";
+    	let t_value = /*gen*/ ctx[16].trim() + "";
     	let t;
 
     	const block = {
@@ -27902,7 +27904,7 @@ var app = (function () {
     			insert_dev(target, t, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*animeInfo*/ 2 && t_value !== (t_value = /*gen*/ ctx[15].trim() + "")) set_data_dev(t, t_value);
+    			if (dirty & /*animeInfo*/ 4 && t_value !== (t_value = /*gen*/ ctx[16].trim() + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t);
@@ -27913,14 +27915,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(149:20) <Badge class=\\\"me-2 mb-1 mt-1\\\" primary>",
+    		source: "(155:20) <Badge class=\\\"me-2 mb-1 mt-1\\\" primary>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (148:16) {#each animeInfo.genre.split(",") as gen}
+    // (154:16) {#each animeInfo.genre.split(",") as gen}
     function create_each_block(ctx) {
     	let badge;
     	let current;
@@ -27946,7 +27948,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const badge_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo*/ 2097154) {
+    			if (dirty & /*$$scope, animeInfo*/ 4194308) {
     				badge_changes.$$scope = { dirty, ctx };
     			}
 
@@ -27970,18 +27972,18 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(148:16) {#each animeInfo.genre.split(\\\",\\\") as gen}",
+    		source: "(154:16) {#each animeInfo.genre.split(\\\",\\\") as gen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (146:8) <AccordionItem active header="Жанр">
+    // (152:8) <AccordionItem active header="Жанр">
     function create_default_slot_3(ctx) {
     	let h5;
     	let current;
-    	let each_value = /*animeInfo*/ ctx[1].genre.split(",");
+    	let each_value = /*animeInfo*/ ctx[2].genre.split(",");
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -28001,7 +28003,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h5, file$2, 146, 12, 5014);
+    			add_location(h5, file$2, 152, 12, 5182);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h5, anchor);
@@ -28013,8 +28015,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*animeInfo*/ 2) {
-    				each_value = /*animeInfo*/ ctx[1].genre.split(",");
+    			if (dirty & /*animeInfo*/ 4) {
+    				each_value = /*animeInfo*/ ctx[2].genre.split(",");
     				validate_each_argument(each_value);
     				let i;
 
@@ -28069,14 +28071,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(146:8) <AccordionItem active header=\\\"Жанр\\\">",
+    		source: "(152:8) <AccordionItem active header=\\\"Жанр\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:8) {#if animeInfo.director}
+    // (159:8) {#if animeInfo.director}
     function create_if_block_1(ctx) {
     	let accordionitem;
     	let current;
@@ -28102,7 +28104,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const accordionitem_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo*/ 2097154) {
+    			if (dirty & /*$$scope, animeInfo*/ 4194308) {
     				accordionitem_changes.$$scope = { dirty, ctx };
     			}
 
@@ -28126,16 +28128,16 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(153:8) {#if animeInfo.director}",
+    		source: "(159:8) {#if animeInfo.director}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (154:12) <AccordionItem active header="Создатель">
+    // (160:12) <AccordionItem active header="Создатель">
     function create_default_slot_2(ctx) {
-    	let t_value = /*animeInfo*/ ctx[1].director + "";
+    	let t_value = /*animeInfo*/ ctx[2].director + "";
     	let t;
 
     	const block = {
@@ -28146,7 +28148,7 @@ var app = (function () {
     			insert_dev(target, t, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*animeInfo*/ 2 && t_value !== (t_value = /*animeInfo*/ ctx[1].director + "")) set_data_dev(t, t_value);
+    			if (dirty & /*animeInfo*/ 4 && t_value !== (t_value = /*animeInfo*/ ctx[2].director + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t);
@@ -28157,17 +28159,17 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(154:12) <AccordionItem active header=\\\"Создатель\\\">",
+    		source: "(160:12) <AccordionItem active header=\\\"Создатель\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (158:8) <AccordionItem active header="Описание">
+    // (164:8) <AccordionItem active header="Описание">
     function create_default_slot_1(ctx) {
     	let html_tag;
-    	let raw_value = /*animeInfo*/ ctx[1].description + "";
+    	let raw_value = /*animeInfo*/ ctx[2].description + "";
     	let html_anchor;
 
     	const block = {
@@ -28181,7 +28183,7 @@ var app = (function () {
     			insert_dev(target, html_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*animeInfo*/ 2 && raw_value !== (raw_value = /*animeInfo*/ ctx[1].description + "")) html_tag.p(raw_value);
+    			if (dirty & /*animeInfo*/ 4 && raw_value !== (raw_value = /*animeInfo*/ ctx[2].description + "")) html_tag.p(raw_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(html_anchor);
@@ -28193,14 +28195,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(158:8) <AccordionItem active header=\\\"Описание\\\">",
+    		source: "(164:8) <AccordionItem active header=\\\"Описание\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:4) <Accordion flush stayOpen class="mt-3">
+    // (123:4) <Accordion flush stayOpen class="mt-3">
     function create_default_slot$1(ctx) {
     	let t0;
     	let accordionitem0;
@@ -28210,7 +28212,7 @@ var app = (function () {
     	let t3;
     	let accordionitem2;
     	let current;
-    	let if_block0 = /*series*/ ctx[2].length > 0 && create_if_block_2(ctx);
+    	let if_block0 = /*series*/ ctx[3].length > 0 && create_if_block_2(ctx);
 
     	accordionitem0 = new AccordionItem({
     			props: {
@@ -28232,7 +28234,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let if_block1 = /*animeInfo*/ ctx[1].director && create_if_block_1(ctx);
+    	let if_block1 = /*animeInfo*/ ctx[2].director && create_if_block_1(ctx);
 
     	accordionitem2 = new AccordionItem({
     			props: {
@@ -28269,11 +28271,11 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*series*/ ctx[2].length > 0) {
+    			if (/*series*/ ctx[3].length > 0) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
 
-    					if (dirty & /*series*/ 4) {
+    					if (dirty & /*series*/ 8) {
     						transition_in(if_block0, 1);
     					}
     				} else {
@@ -28294,24 +28296,24 @@ var app = (function () {
 
     			const accordionitem0_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo*/ 2097154) {
+    			if (dirty & /*$$scope, animeInfo*/ 4194308) {
     				accordionitem0_changes.$$scope = { dirty, ctx };
     			}
 
     			accordionitem0.$set(accordionitem0_changes);
     			const accordionitem1_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo*/ 2097154) {
+    			if (dirty & /*$$scope, animeInfo*/ 4194308) {
     				accordionitem1_changes.$$scope = { dirty, ctx };
     			}
 
     			accordionitem1.$set(accordionitem1_changes);
 
-    			if (/*animeInfo*/ ctx[1].director) {
+    			if (/*animeInfo*/ ctx[2].director) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
 
-    					if (dirty & /*animeInfo*/ 2) {
+    					if (dirty & /*animeInfo*/ 4) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -28332,7 +28334,7 @@ var app = (function () {
 
     			const accordionitem2_changes = {};
 
-    			if (dirty & /*$$scope, animeInfo*/ 2097154) {
+    			if (dirty & /*$$scope, animeInfo*/ 4194308) {
     				accordionitem2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -28372,7 +28374,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(117:4) <Accordion flush stayOpen class=\\\"mt-3\\\">",
+    		source: "(123:4) <Accordion flush stayOpen class=\\\"mt-3\\\">",
     		ctx
     	});
 
@@ -28390,7 +28392,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*isLoaded*/ ctx[3]) return 0;
+    		if (/*isLoaded*/ ctx[4]) return 0;
     		return 1;
     	}
 
@@ -28411,7 +28413,7 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(window, "keydown", /*keydownHandler*/ ctx[7], false, false, false);
+    				dispose = listen_dev(window, "keydown", /*keydownHandler*/ ctx[8], false, false, false);
     				mounted = true;
     			}
     		},
@@ -28477,16 +28479,17 @@ var app = (function () {
     	let animeId = currentRoute.namedParams.id;
     	let duration = -1;
     	let currentTime = 0;
+    	let paused = true;
     	let animeInfo = {};
     	let series = [];
     	let isLoaded = false;
     	let selectedSeria = {};
 
     	onMount(async () => {
-    		$$invalidate(1, animeInfo = await getAnimeInfo(animeId));
-    		$$invalidate(2, series = await getAnimePlaylist(animeId));
-    		$$invalidate(4, selectedSeria = series[0] || []);
-    		$$invalidate(3, isLoaded = true);
+    		$$invalidate(2, animeInfo = await getAnimeInfo(animeId));
+    		$$invalidate(3, series = await getAnimePlaylist(animeId));
+    		$$invalidate(5, selectedSeria = series[0] || []);
+    		$$invalidate(4, isLoaded = true);
     	});
 
     	async function getAnimeInfo(id) {
@@ -28539,18 +28542,23 @@ var app = (function () {
     	}
 
     	function keydownHandler(event) {
-    		switch (event.key) {
+    		event.preventDefault();
+
+    		switch (event.code) {
     			case "ArrowLeft":
     				$$invalidate(0, currentTime = currentTime - 10);
     				break;
     			case "ArrowRight":
     				$$invalidate(0, currentTime = currentTime + 10);
     				break;
+    			case "Space":
+    				$$invalidate(1, paused = !paused);
+    				break;
     		}
     	}
 
     	function seriesHandler(seria) {
-    		$$invalidate(4, selectedSeria = seria);
+    		$$invalidate(5, selectedSeria = seria);
     	}
 
     	const writable_props = ['currentRoute'];
@@ -28563,7 +28571,7 @@ var app = (function () {
     	const click_handler_1 = seria => seriesHandler(seria);
 
     	$$self.$$set = $$props => {
-    		if ('currentRoute' in $$props) $$invalidate(9, currentRoute = $$props.currentRoute);
+    		if ('currentRoute' in $$props) $$invalidate(10, currentRoute = $$props.currentRoute);
     	};
 
     	$$self.$capture_state = () => ({
@@ -28580,6 +28588,7 @@ var app = (function () {
     		animeId,
     		duration,
     		currentTime,
+    		paused,
     		animeInfo,
     		series,
     		isLoaded,
@@ -28592,14 +28601,15 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('currentRoute' in $$props) $$invalidate(9, currentRoute = $$props.currentRoute);
+    		if ('currentRoute' in $$props) $$invalidate(10, currentRoute = $$props.currentRoute);
     		if ('animeId' in $$props) animeId = $$props.animeId;
-    		if ('duration' in $$props) $$invalidate(5, duration = $$props.duration);
+    		if ('duration' in $$props) $$invalidate(6, duration = $$props.duration);
     		if ('currentTime' in $$props) $$invalidate(0, currentTime = $$props.currentTime);
-    		if ('animeInfo' in $$props) $$invalidate(1, animeInfo = $$props.animeInfo);
-    		if ('series' in $$props) $$invalidate(2, series = $$props.series);
-    		if ('isLoaded' in $$props) $$invalidate(3, isLoaded = $$props.isLoaded);
-    		if ('selectedSeria' in $$props) $$invalidate(4, selectedSeria = $$props.selectedSeria);
+    		if ('paused' in $$props) $$invalidate(1, paused = $$props.paused);
+    		if ('animeInfo' in $$props) $$invalidate(2, animeInfo = $$props.animeInfo);
+    		if ('series' in $$props) $$invalidate(3, series = $$props.series);
+    		if ('isLoaded' in $$props) $$invalidate(4, isLoaded = $$props.isLoaded);
+    		if ('selectedSeria' in $$props) $$invalidate(5, selectedSeria = $$props.selectedSeria);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -28608,6 +28618,7 @@ var app = (function () {
 
     	return [
     		currentTime,
+    		paused,
     		animeInfo,
     		series,
     		isLoaded,
@@ -28625,7 +28636,7 @@ var app = (function () {
     class AnimePage extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { currentRoute: 9 });
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { currentRoute: 10 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -28637,7 +28648,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*currentRoute*/ ctx[9] === undefined && !('currentRoute' in props)) {
+    		if (/*currentRoute*/ ctx[10] === undefined && !('currentRoute' in props)) {
     			console.warn("<AnimePage> was created without expected prop 'currentRoute'");
     		}
     	}
