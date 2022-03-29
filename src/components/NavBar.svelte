@@ -1,14 +1,14 @@
 <script>
     import { FormGroup, Navbar, NavbarBrand, Input } from "sveltestrap";
     import { uriHeader } from "../config";
-    import { navigateTo } from 'svelte-router-spa'
+    import { navigateTo } from "svelte-router-spa";
 
     let searchInput = "";
 
-    function handleInput() {
+    function handleInput(event) {
         const trimmedText = searchInput.trim();
-        if (trimmedText !== "") {
-            searchInput=""
+        if (trimmedText !== "" && event.key === 'Enter') {
+            searchInput = "";
             navigateTo(`${uriHeader}/search/${trimmedText}`);
         }
     }
@@ -23,7 +23,7 @@
             name="search"
             placeholder="найдите любимое аниме"
             bind:value={searchInput}
-            on:change={handleInput}
+            on:keydown={handleInput}
         />
     </FormGroup>
 </Navbar>
