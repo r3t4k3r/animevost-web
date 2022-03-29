@@ -15,7 +15,7 @@
 
     let duration = -1;
     let currentTime = 0;
-    let paused = false;
+    let paused = true;
 
     let animeInfo = {};
     let series = [];
@@ -68,22 +68,30 @@
         return json;
     }
 
+    function onPausedUpdate(event) {
+        paused = event.detail;
+    }
+
     function onTimeUpdate(event) {
         currentTime = event.detail;
     }
 
     function keydownHandler(event) {
-        event.preventDefault();
-        switch (event.code) {
-            case "ArrowLeft":
-                currentTime = currentTime - 10;
-                break;
-            case "ArrowRight":
-                currentTime = currentTime + 10;
-                break;
-            case "Space":
-                paused = !paused;
-                break;
+        if (String(event.target) === "[object HTMLBodyElement]") {
+            switch (event.code) {
+                case "ArrowLeft":
+                    event.preventDefault();
+                    currentTime = currentTime - 10;
+                    break;
+                case "ArrowRight":
+                    event.preventDefault();
+                    currentTime = currentTime + 10;
+                    break;
+                case "Space":
+                    event.preventDefault();
+                    paused = !paused;
+                    break;
+            }
         }
     }
 
@@ -92,7 +100,7 @@
     }
 </script>
 
-<svelte:window on:keydown={keydownHandler} />
+<svelte:body on:keydown={keydownHandler} />
 
 {#if isLoaded}
     <h4>
@@ -106,10 +114,11 @@
             <div style="max-width:800px">
                 <Player
                     on:vmCurrentTimeChange={onTimeUpdate}
+                    on:vmPausedChange={onPausedUpdate}
                     {currentTime}
                     {duration}
                     {paused}
-                    volume={70}
+                    volume={80}
                 >
                     <vm-video poster={selectedSeria.preview}>
                         <source data-src={selectedSeria.std} type="video/mp4" />
