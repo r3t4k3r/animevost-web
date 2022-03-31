@@ -1,5 +1,5 @@
 <script>
-    import { uriHeader, apiUrl } from "../config";
+    import { uriHeaderWD, apiUrl } from "../config";
     import AnimeList from "../components/AnimeList.svelte";
 
     export let currentRoute;
@@ -7,7 +7,7 @@
     let animes = [];
     let animeFound = true;
 
-    let imgUrl = `${uriHeader}/static/img/404.png`;
+    let imgUrl = `${uriHeaderWD}/static/img/404.png`;
 
     $: (async () => {
         name = currentRoute.namedParams.name;
@@ -37,7 +37,7 @@
 {#if animeFound}
     <AnimeList {animes} />
 {:else}
-    <div class="d-grid gap-5">
+    <div class="d-grid gap-3">
         <div class="d-flex justify-content-center">
             <img src={imgUrl} style="width:300px;height:300px;" alt="loading" />
         </div>
