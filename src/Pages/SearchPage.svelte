@@ -1,11 +1,13 @@
 <script>
-    import { apiUrl } from "../config";
+    import { uriHeader, apiUrl } from "../config";
     import AnimeList from "../components/AnimeList.svelte";
 
     export let currentRoute;
     let name;
     let animes = [];
     let animeFound = true;
+
+    let imgUrl = `${uriHeader}/static/img/404.png`;
 
     $: (async () => {
         name = currentRoute.namedParams.name;
@@ -35,5 +37,12 @@
 {#if animeFound}
     <AnimeList {animes} />
 {:else}
-    К сожалению ничего не найдено (
+    <div class="d-grid gap-5">
+        <div class="d-flex justify-content-center">
+            <img src={imgUrl} style="width:300px;height:300px;" alt="loading" />
+        </div>
+        <div class="d-flex justify-content-center">
+            <h3>Ничего не найдено 404</h3>
+        </div>
+    </div>
 {/if}

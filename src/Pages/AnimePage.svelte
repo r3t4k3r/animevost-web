@@ -5,10 +5,10 @@
         Accordion,
         Button,
         AccordionItem,
-        Badge,
-        Spinner,
+        Badge
     } from "sveltestrap";
     import { apiUrl } from "../config";
+    import Loading from "../components/Loading.svelte"
 
     export let currentRoute;
     let animeId = currentRoute.namedParams.id;
@@ -175,5 +175,5 @@
         </AccordionItem>
     </Accordion>
 {:else}
-    <h2>loading <Spinner color="primary" /></h2>
+    <Loading />
 {/if}

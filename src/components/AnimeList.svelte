@@ -2,19 +2,19 @@
     import {
         Accordion,
         AccordionItem,
-        Spinner,
         Row,
         Col,
         Image,
         Badge,
     } from "sveltestrap";
+    import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { uriHeader } from "../config";
     export let animes;
 </script>
 
-<div class="d-grid gap-5 mb-5 mt-5">
-    {#if animes.length > 0}
+{#if animes.length > 0}
+    <div class="d-grid gap-5 mb-5 mt-5">
         {#each animes as anime (anime.id)}
             <Row>
                 <Col
@@ -53,7 +53,7 @@
                 </Col>
             </Row>
         {/each}
-    {:else}
-        <h2>loading <Spinner color="primary" /></h2>
-    {/if}
-</div>
+    </div>
+{:else}
+    <Loading />
+{/if}
