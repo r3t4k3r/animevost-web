@@ -63,7 +63,7 @@
         });
         const json = await response.json();
         json.sort((a, b) => {
-            return Number(a.name.split(" ")[0]) - Number(b.name.split(" ")[0]);
+            return Number(a.name.match(/\d+/)[0]) - Number(b.name.match(/\d+/)[0]);
         });
         return json;
     }
