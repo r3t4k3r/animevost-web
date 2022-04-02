@@ -7,6 +7,7 @@
         Image,
         Badge,
     } from "sveltestrap";
+    import { scale, fade } from "svelte/transition";
     import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { uriHeader } from "../config";
@@ -21,17 +22,19 @@
                     class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-5 col-12 d-flex justify-content-center"
                 >
                     <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                        <Image
-                            src={anime.urlImagePreview}
-                            style="height: 300px; width: 200px; border-radius: .25rem"
-                        />
+                        <div in:scale>
+                            <Image
+                                src={anime.urlImagePreview}
+                                style="height: 300px; width: 200px; border-radius: .25rem"
+                            />
+                        </div>
                     </Navigate>
                 </Col>
                 <Col
                     class="col-xxl-10 col-xl-9 col-lg-9 col-md-8 col-sm-7 col-12"
                 >
                     <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                        <h4>{anime.title}</h4>
+                        <h4 in:fade>{anime.title}</h4>
                     </Navigate>
                     <Accordion flush stayOpen>
                         <AccordionItem header="Год выпуска">

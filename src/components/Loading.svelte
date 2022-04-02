@@ -7,7 +7,7 @@
     let imgUrl = `${uriHeaderWD}/static/img/loading.png`;
 </script>
 
-<div class="parent" in:scale out:scale>
+<div class="parent" in:scale="{{duration: 150}}" out:scale="{{duration: 300}}">
     <div class="d-grid gap-3 block">
         <div class="d-flex justify-content-center">
             <img src={imgUrl} class="img" alt="loading" />
