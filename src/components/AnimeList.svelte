@@ -34,25 +34,27 @@
                     class="col-xxl-10 col-xl-9 col-lg-9 col-md-8 col-sm-7 col-12"
                 >
                     <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                        <h4 in:fade>{anime.title}</h4>
+                        <h4 in:scale>{anime.title}</h4>
                     </Navigate>
-                    <Accordion flush stayOpen>
-                        <AccordionItem header="Год выпуска">
-                            {anime.year}
-                        </AccordionItem>
-                        <AccordionItem header="Жанр">
-                            <h5>
-                                {#each anime.genre.split(",") as gen}
-                                    <Badge class="me-2 mb-1 mt-1" primary>
-                                        {gen.trim()}
-                                    </Badge>
-                                {/each}
-                            </h5>
-                        </AccordionItem>
-                        <AccordionItem header="Описание">
-                            {@html anime.description}
-                        </AccordionItem>
-                    </Accordion>
+                    <div in:fade>
+                        <Accordion flush stayOpen>
+                            <AccordionItem header="Год выпуска">
+                                {anime.year}
+                            </AccordionItem>
+                            <AccordionItem header="Жанр">
+                                <h5>
+                                    {#each anime.genre.split(",") as gen}
+                                        <Badge class="me-2 mb-1 mt-1" primary>
+                                            {gen.trim()}
+                                        </Badge>
+                                    {/each}
+                                </h5>
+                            </AccordionItem>
+                            <AccordionItem header="Описание">
+                                {@html anime.description}
+                            </AccordionItem>
+                        </Accordion>
+                    </div>
                 </Col>
             </Row>
         {/each}

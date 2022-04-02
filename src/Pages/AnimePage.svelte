@@ -7,6 +7,7 @@
         AccordionItem,
         Badge
     } from "sveltestrap";
+    import { scale, fade } from "svelte/transition";
     import { apiUrl } from "../config";
     import Loading from "../components/Loading.svelte"
 
@@ -106,7 +107,7 @@
 <svelte:body on:keydown={keydownHandler} />
 
 {#if isLoaded}
-    <h4>
+    <h4 in:scale>
         {animeInfo.title}
         <Badge class="me-2 mb-1 mt-1"
             >{selectedSeria.name || "Нет серий, Анонс?"}</Badge
