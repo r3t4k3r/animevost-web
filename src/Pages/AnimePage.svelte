@@ -66,7 +66,6 @@
         json.sort((a, b) => {
             const matchA = a.name.match(/\d+/);
             const matchB = b.name.match(/\d+/);
-            console.log(matchA, matchB);
             return matchA && matchB ? Number(matchA[0]) - Number(matchB[0]) : 1;
         });
         return json;
