@@ -14,9 +14,9 @@
                 <Col
                     class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12"
                 >
-                    <Row>
+                    <Row class="mb-5">
                         <Col
-                            class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 col-12 d-flex justify-content-center mb-5"
+                            class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 col-12 d-flex justify-content-center"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
                                 <div in:scale>
@@ -31,7 +31,9 @@
                                             animated
                                             bar
                                             color="success"
-                                            value={(anime.rating /anime.votes) * 20}
+                                            value={(anime.rating /
+                                                anime.votes) *
+                                                20}
                                         >
                                             {(
                                                 anime.rating / anime.votes
