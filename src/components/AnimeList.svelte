@@ -55,7 +55,7 @@
                             class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 col-12"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <h4 in:scale>{anime.title.split("/")[0]}</h4>
+                                <h4 in:fade>{anime.title.split("/")[0]}</h4>
                             </Navigate>
                             <div in:fade>
                                 <h5>

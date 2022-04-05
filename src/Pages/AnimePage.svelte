@@ -7,10 +7,10 @@
         AccordionItem,
         Badge
     } from "sveltestrap";
-    import { scale, fade } from "svelte/transition";
+    import { fade } from "svelte/transition";
     import { apiUrl } from "../config";
     import Loading from "../components/Loading.svelte"
-
+    
     export let currentRoute;
     let animeId = currentRoute.namedParams.id;
 
@@ -106,7 +106,7 @@
 <svelte:body on:keydown={keydownHandler} />
 
 {#if isLoaded}
-    <h4 in:scale>
+    <h4 in:fade>
         {animeInfo.title}
         <Badge class="me-2 mb-1 mt-1"
             >{selectedSeria.name || "Нет серий, Анонс?"}</Badge
@@ -123,7 +123,7 @@
                     {paused}
                     volume={80}
                 >
-                    <vm-video poster={selectedSeria.preview}>
+                    <vm-video>
                         <source data-src={selectedSeria.std} type="video/mp4" />
                         <track kind="captions" />
                     </vm-video>
