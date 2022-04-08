@@ -3,7 +3,7 @@
     import { scale, fade } from "svelte/transition";
     import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
-    import { uriHeader } from "../config";
+    import { uriHeader, uriHeaderWD } from "../config";
     export let animes;
 </script>
 
@@ -20,9 +20,11 @@
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
                                 <div in:scale>
-                                    <Image
+                                    <img
+                                        alt="logo"
                                         src={anime.urlImagePreview}
                                         style="height: 300px; width: 200px; border-radius: .25rem"
+                                        on:error={(obj) => {obj.target.src=`${uriHeaderWD}/static/img/alpha.png`}}
                                     />
                                 </div>
                                 <div in:fade>
