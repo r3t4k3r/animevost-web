@@ -65,7 +65,7 @@
     <ModalBody>
         Исходный код: <a target="_blank" href="https://github.com/r3t4k3r/animevost-web">тут</a><br>
         Спасибо: <a target="_blank" href="https://animevost.org">Animevost</a> и <a target="_blank" href="https://alpha1918.moe/">Альфа 1918</a><br><br>
-        Сбер для пожертований: 5469610011057477
+        Сбер для донатов: 5469610011057477
     </ModalBody>
     <ModalFooter>
         <Button color="secondary" on:click={toggleModal}>Закрыть</Button>
