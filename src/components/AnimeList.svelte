@@ -42,7 +42,6 @@
                                             ).toFixed(2)}
                                         </Progress>
                                         <Progress
-                                            striped
                                             bar
                                             color="danger"
                                             value={101 -
