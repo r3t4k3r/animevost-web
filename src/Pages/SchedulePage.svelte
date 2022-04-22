@@ -80,7 +80,7 @@
 {#if isLoaded}
     <Accordion flush stayOpen class="mt-3">
         {#each [0,1,2,3,4,5,6] as number (number)}
-        <AccordionItem active={new Date().getDay() === number} header="{getNameByNumber(number)}">
+        <AccordionItem active={new Date().getDay() == 0 ? 6 : new Date().getDay() - 1 === number} header="{getNameByNumber(number)}">
             <Row>
                 
                 {#each getAnimesByDay(number) as anime (anime.id)}
