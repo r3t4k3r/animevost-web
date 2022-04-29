@@ -78,7 +78,7 @@
 </script>
 
 {#if isLoaded}
-    <h2>Расписание</h2>
+    <h2 class="mb-5">Расписание</h2>
     <Accordion flush stayOpen class="mt-3">
         {#each [0,1,2,3,4,5,6] as number (number)}
         <AccordionItem active={new Date().getDay() === (number === 6 ? 0 :number+1)} header="{getNameByNumber(number)}">
