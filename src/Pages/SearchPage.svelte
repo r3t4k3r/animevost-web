@@ -35,19 +35,20 @@
     }
 </script>
 
+<h2>Результат поиска по запросу "{decodeURI(name)}"</h2>
 {#if animeFound}
     <AnimeList {animes} />
 {:else}
-<div class="parent" in:scale out:scale>
-    <div class="d-grid gap-3 block">
-        <div class="d-flex justify-content-center">
-            <img src={imgUrl} class="img" alt="loading" />
-        </div>
-        <div class="d-flex justify-content-center">
-            <h3>По вашему запросу ничего не найдено</h3>
+    <div class="parent" in:scale out:scale>
+        <div class="d-grid gap-3 block">
+            <div class="d-flex justify-content-center">
+                <img src={imgUrl} class="img" alt="loading" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <h3>По вашему запросу ничего не найдено</h3>
+            </div>
         </div>
     </div>
-</div>
 {/if}
 
 <style>
@@ -77,4 +78,3 @@
         border: none;
     }
 </style>
-
