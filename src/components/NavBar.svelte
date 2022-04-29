@@ -73,7 +73,7 @@
         <div class="d-flex justify-content-center">
             <img
                 alt="logo"
-                src={`${uriHeaderWD}/static/img/loading.png`}
+                src={`${uriHeaderWD}/static/img/love.png`}
                 style="height: 300px; width: 300px; border-radius: .25rem;"
             />
         </div>
