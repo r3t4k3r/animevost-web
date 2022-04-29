@@ -8,7 +8,7 @@
 </script>
 
 {#if animes.length > 0}
-    <div class="d-grid gap-5 mb-5 mt-5">
+    <div class="d-grid gap-5 mb-5">
         <Row>
             {#each animes as anime (anime.id)}
                 <Col
