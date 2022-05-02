@@ -1,6 +1,5 @@
 <script>
     import { Row, Col, Image, Badge, Progress } from "sveltestrap";
-    import { scale, fade } from "svelte/transition";
     import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { uriHeader, uriHeaderWD } from "../config";
@@ -19,7 +18,7 @@
                             class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 col-12 d-flex justify-content-center"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <div in:scale>
+                                <div>
                                     <img
                                         alt="logo"
                                         src={anime.urlImagePreview}
@@ -27,10 +26,9 @@
                                         on:error={(obj) => {obj.target.src=`${uriHeaderWD}/static/img/alpha.png`}}
                                     />
                                 </div>
-                                <div in:fade>
+                                <div>
                                     <Progress multi>
                                         <Progress
-                                            animated
                                             bar
                                             color="success"
                                             value={(anime.rating /
@@ -44,7 +42,7 @@
                                         <Progress
                                             bar
                                             color="danger"
-                                            value={101 -
+                                            value={100 -
                                                 (anime.rating / anime.votes) *
                                                     20}
                                         />
@@ -56,9 +54,9 @@
                             class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 col-12"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <h4 in:fade>{anime.title.split("/")[0]}</h4>
+                                <h4>{anime.title.split("/")[0]}</h4>
                             </Navigate>
-                            <div in:fade>
+                            <div>
                                 <h5>
                                     {anime.type} / {anime.year} /
                                     {#each anime.genre.split(",") as gen}
