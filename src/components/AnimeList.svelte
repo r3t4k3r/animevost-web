@@ -42,7 +42,7 @@
                                         <Progress
                                             bar
                                             color="danger"
-                                            value={100 -
+                                            value={101 -
                                                 (anime.rating / anime.votes) *
                                                     20}
                                         />
