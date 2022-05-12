@@ -2,14 +2,18 @@
     import { onMount } from "svelte";
     import { Player, DefaultUi } from "@vime/svelte";
     import {
-        Accordion,
+        Card,
         Button,
-        AccordionItem,
-        Badge
+        CardBody,
+        CardHeader,
+        CardTitle,
+        CardText,
+        Badge,
     } from "sveltestrap";
     import { apiUrl } from "../config";
-    import Loading from "../components/Loading.svelte"
-    
+    import Loading from "../components/Loading.svelte";
+    import { fade, scale } from "svelte/transition";
+
     export let currentRoute;
     let animeId = currentRoute.namedParams.id;
 
@@ -105,13 +109,13 @@
 <svelte:body on:keydown={keydownHandler} />
 
 {#if isLoaded}
-    <h4>
+    <h4 in:fade>
         {animeInfo.title}
         <Badge class="me-2 mb-1 mt-1"
             >{selectedSeria.name || "Нет серий, Анонс?"}</Badge
         >
     </h4>
-    <div style="max-width:800px" class="mx-auto">
+    <div in:fade style="max-width:800px" class="mx-auto">
         {#if series.length > 0}
             <div style="max-width:800px">
                 <Player
@@ -131,9 +135,12 @@
             </div>
         {/if}
     </div>
-    <Accordion flush stayOpen class="mt-3">
-        {#if series.length > 0}
-            <AccordionItem active header="Серии">
+    {#if series.length > 0}
+        <Card class="mb-3 mt-3">
+            <CardHeader>
+                <CardTitle>Серии</CardTitle>
+            </CardHeader>
+            <CardBody>
                 {#each series as seria (seria.name)}
                     {#if seria.name === selectedSeria.name}
                         <!-- если эта серия выбрана -->
@@ -155,27 +162,55 @@
                         </Button>
                     {/if}
                 {/each}
-            </AccordionItem>
-        {/if}
-        <AccordionItem active header="Год выпуска">
-            {animeInfo.year}
-        </AccordionItem>
-        <AccordionItem active header="Жанр">
-            <h5>
-                {#each animeInfo.genre.split(",") as gen}
-                    <Badge class="me-2 mb-1 mt-1" primary>{gen.trim()}</Badge>
-                {/each}
-            </h5>
-        </AccordionItem>
-        {#if animeInfo.director}
-            <AccordionItem active header="Создатель">
+            </CardBody>
+        </Card>
+    {/if}
+    <Card class="mb-3">
+        <CardHeader>
+            <CardTitle>Год выпуска</CardTitle>
+        </CardHeader>
+        <CardBody>
+            <CardText>{animeInfo.year}</CardText>
+        </CardBody>
+    </Card>
+    <Card class="mb-3">
+        <CardHeader>
+            <CardTitle>Жанр</CardTitle>
+        </CardHeader>
+        <CardBody>
+            <CardText>
+                <h5>
+                    {#each animeInfo.genre.split(",") as gen}
+                        <Badge class="me-2 mb-1 mt-1" primary
+                            >{gen.trim()}</Badge
+                        >
+                    {/each}
+                </h5>
+            </CardText>
+        </CardBody>
+    </Card>
+    {#if animeInfo.director}
+    <Card class="mb-3">
+        <CardHeader>
+            <CardTitle>Создатель</CardTitle>
+        </CardHeader>
+        <CardBody>
+            <CardText>
                 {animeInfo.director}
-            </AccordionItem>
-        {/if}
-        <AccordionItem active header="Описание">
-            {@html animeInfo.description}
-        </AccordionItem>
-    </Accordion>
+            </CardText>
+        </CardBody>
+    </Card>
+    {/if}
+    <Card class="mb-5">
+        <CardHeader>
+            <CardTitle>Описание</CardTitle>
+        </CardHeader>
+        <CardBody>
+            <CardText>
+                {@html animeInfo.description}
+            </CardText>
+        </CardBody>
+    </Card>
 {:else}
     <Loading />
 {/if}
