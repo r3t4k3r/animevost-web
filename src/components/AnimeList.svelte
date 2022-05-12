@@ -3,6 +3,7 @@
     import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { uriHeader, uriHeaderWD } from "../config";
+    import { fade, scale } from "svelte/transition";
     export let animes;
 </script>
 
@@ -18,7 +19,7 @@
                             class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 col-12 d-flex justify-content-center"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <div>
+                                <div in:fade>
                                     <img
                                         alt="logo"
                                         src={anime.urlImagePreview}
@@ -54,7 +55,7 @@
                             class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 col-12"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <h4>{anime.title.split("/")[0]}</h4>
+                                <h4 in:scale>{anime.title.split("/")[0]}</h4>
                             </Navigate>
                             <div>
                                 <h5>

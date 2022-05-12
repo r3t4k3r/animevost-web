@@ -2,12 +2,12 @@
     import { Spinner } from "sveltestrap";
     import { uriHeaderWD } from "../config";
 
-    import { scale } from "svelte/transition";
+    import { fade, scale } from "svelte/transition";
 
     let imgUrl = `${uriHeaderWD}/static/img/loading.png`;
 </script>
 
-<div class="parent" in:scale="{{duration: 150}}" out:scale="{{duration: 300}}">
+<div class="parent" in:scale="{{duration: 150}}" out:scale="{{duration: 150}}">
     <div class="d-grid gap-3 block">
         <div class="d-flex justify-content-center">
             <img src={imgUrl} class="img" alt="loading" />
