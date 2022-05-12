@@ -13,9 +13,10 @@
         NavbarToggler,
         Collapse,
         Nav,
+        Icon,
     } from "sveltestrap";
     import { uriHeader, uriHeaderWD } from "../config";
-    import { navigateTo } from "svelte-router-spa";
+    import { navigateTo, Navigate } from "svelte-router-spa";
 
     let searchInput = "";
 
@@ -37,17 +38,48 @@
     }
 </script>
 
+<!-- <div class="nbar">
+    <ul class="navbar">
+        <li>
+            <div on:click={() => navigateTo(`${uriHeader}/`)}>
+                <span class="icon"><Icon name="house" /></span>
+                Главная
+            </div>
+        </li>
+        <li>
+            <div on:click={() => navigateTo(`${uriHeader}/schedule`)}>
+                <span class="icon"><Icon name="card-list" /></span>
+                Расписание
+            </div>
+        </li>
+        <li>
+            <div on:click={() => navigateTo(`${uriHeader}/about`)}>
+                <span class="icon"><Icon name="info-circle" /></span>
+                О сайте
+            </div>
+        </li>
+    </ul>
+</div> -->
+
 <Navbar color="dark" dark class="sticky-top" expand="md">
-    <NavbarBrand href={`/${uriHeader}`}>Animevost</NavbarBrand>
-    <!-- search -->
+    <NavbarBrand href={`/${uriHeader}`}>
+        <span class="icon"><Icon name="house" /></span>
+        Animevost
+    </NavbarBrand>
     <NavbarToggler on:click={toggleNav} />
     <Collapse isOpen={navOpen} navbar expand="md" on:update={handleUpdate}>
         <Nav class="ms-auto" navbar>
             <NavItem>
-                <NavLink on:click={toggleModal}>О сайте</NavLink>
+                <NavLink on:click={toggleModal}>
+                    <span class="icon"><Icon name="info-circle" /></span>
+                    О сайте
+                    </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href={`${uriHeader}/schedule`}>Расписание</NavLink>
+                <NavLink href={`${uriHeader}/schedule`}>
+                    <span class="icon"><Icon name="card-list" /></span>
+                    Расписание
+                </NavLink>
             </NavItem>
             <Input
                 type="search"
@@ -85,3 +117,55 @@
     </ModalFooter>
 </Modal>
 <div style="margin-bottom: 3em" />
+<!-- <style>
+    .spacer-top {
+        margin-top: 5em;
+        z-index: 0;
+    }
+
+    .nbar {
+        position: sticky;
+    }
+    li {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 0 16px;
+        text-decoration: none;
+        font-size: 13px;
+        list-style-type: none; /* Убираем маркеры */
+        z-index: 101;
+    }
+    .icon {
+        display: block;
+        font-size: 20px;
+    }
+    ul {
+        padding-left: 0; /* Сдвигаем список влево */
+    }
+
+    @media (max-width: 756px) {
+        .nbar {
+            position: sticky;
+        }
+        li {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 0 16px;
+            text-decoration: none;
+            font-size: 13px;
+            list-style-type: none; /* Убираем маркеры */
+            z-index: 101;
+        }
+        .icon {
+            display: block;
+            font-size: 20px;
+        }
+        ul {
+            padding-left: 0; /* Сдвигаем список влево */
+        }
+    }
+</style> -->
