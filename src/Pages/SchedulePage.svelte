@@ -1,6 +1,16 @@
 <script>
     import { onMount } from "svelte";
-    import { Accordion, Row, AccordionItem, Col } from "sveltestrap";
+    import {
+        Accordion,
+        Row,
+        Spinner,
+        Col,
+        CardHeader,
+        Card,
+        CardText,
+        CardBody,
+        CardTitle,
+    } from "sveltestrap";
     import Loading from "../components/Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { apiUrl, uriHeaderWD, uriHeader } from "../config";
@@ -22,7 +32,7 @@
             mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "same-origin", // include, *same-origin, omit
-            referrerPolicy: "no-referrer"
+            referrerPolicy: "no-referrer",
         });
         const json = await response.json();
         return json;
@@ -88,32 +98,43 @@
     <h2 class="mb-5">Расписание</h2>
     <Accordion flush stayOpen class="mt-3">
         {#each [0, 1, 2, 3, 4, 5, 6] as number (number)}
-            <AccordionItem
-                active={new Date().getDay() === (number === 6 ? 0 : number + 1)}
-                header={getNameByNumber(number)}
-            >
-                <Row>
-                    {#each getAnimesByDay(number) as anime (anime.id)}
-                        <Col
-                            class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6"
-                        >
-                            <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <img
-                                    alt="logo"
-                                    src={anime.urlImagePreview}
-                                    style="width: 100%; border-radius: .25rem;"
-                                    on:error={(obj) => {
-                                        obj.target.src = `${uriHeaderWD}/static/img/alpha.png`;
-                                    }}
-                                />
-                                <div class="mb-3">
-                                    {anime.name}
-                                </div>
-                            </Navigate>
-                        </Col>
-                    {/each}
-                </Row>
-            </AccordionItem>
+            <Card class="mb-3">
+                <CardHeader>
+                    <CardTitle>
+                        {getNameByNumber(number)}
+                        {#if new Date().getDay() === (number === 6 ? 0 : number + 1)}
+                            <Spinner size="sm" color='success' type="grow" />
+                        {/if}
+                    </CardTitle>
+                </CardHeader>
+                <CardBody>
+                    <CardText>
+                        <Row>
+                            {#each getAnimesByDay(number) as anime (anime.id)}
+                                <Col
+                                    class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6"
+                                >
+                                    <Navigate
+                                        to={`${uriHeader}/anime/${anime.id}`}
+                                    >
+                                        <img
+                                            alt="logo"
+                                            src={anime.urlImagePreview}
+                                            style="width: 100%; border-radius: .25rem;"
+                                            on:error={(obj) => {
+                                                obj.target.src = `${uriHeaderWD}/static/img/alpha.png`;
+                                            }}
+                                        />
+                                        <div class="mb-3">
+                                            {anime.name}
+                                        </div>
+                                    </Navigate>
+                                </Col>
+                            {/each}
+                        </Row>
+                    </CardText>
+                </CardBody>
+            </Card>
         {/each}
     </Accordion>
 {:else}
