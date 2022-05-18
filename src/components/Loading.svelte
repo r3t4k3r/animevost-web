@@ -13,7 +13,7 @@
             <img src={imgUrl} class="img" alt="loading" />
         </div>
         <div class="d-flex justify-content-center">
-            <h3>Загрузка <Spinner color="primary" /></h3>
+            <h3>Загрузка</h3><Spinner color="primary" />
         </div>
     </div>
 </div>
