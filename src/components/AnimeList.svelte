@@ -64,11 +64,12 @@
                                         <Badge class="me-2 mb-1 mt-1" primary>
                                             {gen.trim()}
                                         </Badge>
-                                    {/each}
+                                    {/each} 
+                                    / {anime.title.split("[")[1].split("]")[0]}
                                 </h5>
-                                <h5>
-                                    {anime.title.split("[")[1].split("]")[0]}
-                                </h5>
+
+                                    {@html anime.description.slice(0, 200)}...
+
                             </div>
                         </Col>
                     </Row>
