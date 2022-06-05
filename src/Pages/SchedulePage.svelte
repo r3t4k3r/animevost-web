@@ -79,7 +79,7 @@
             case 0:
                 return "Понедельник";
             case 1:
-                return "Втоник";
+                return "Вторник";
             case 2:
                 return "Среда";
             case 3:
