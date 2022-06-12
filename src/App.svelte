@@ -4,17 +4,17 @@
 	import { Router } from "svelte-router-spa";
 	import { routes } from "./routes";
 	import {uriHeaderWD} from "./config";
-	const background_url = `${uriHeaderWD}/static/img/background.png`;
+	// const background_url = `${uriHeaderWD}/static/img/background.png`;
 </script>
-<div class="background" style="background-image: url({background_url});">
-</div>
+<!-- <div class="background" style="background-image: url({background_url});">
+</div> -->
 <NavBar/>
 
 	<Container>
 		<Router {routes} />
 	</Container>
 
-<style>
+<!-- <style>
 	.background {
 		position: fixed; /* Фиксируем на одном месте */
     	left: 0; right: 0; /* Вся ширин */
@@ -23,4 +23,4 @@
 		background-attachment: fixed;
 		filter: blur(4px);
 	}
-</style>
+</style> -->
