@@ -1,3 +1,11 @@
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 vm-player {
   --vm-color-dark: #313131;
   --vm-color-gray-100: rgba(0, 0, 0, 0.1);
