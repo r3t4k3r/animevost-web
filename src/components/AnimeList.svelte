@@ -86,7 +86,7 @@
         filter: blur(5px);
         position: absolute;
         height: 314px;
-        width: 220px;
+        width: 204px;
         z-index: -1;
     }
     @media screen and (max-width: 575px) {
