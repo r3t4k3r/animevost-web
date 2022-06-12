@@ -18,59 +18,58 @@
                         <Col
                             class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 col-12 d-flex justify-content-center"
                         >
+                            <div
+                                style="background: url({anime.urlImagePreview})"
+                                class="imagebackground"
+                            />
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <div in:fade>
-                                    <img
-                                        alt="logo"
-                                        src={anime.urlImagePreview}
-                                        style="height: 300px; width: 200px; border-radius: .25rem"
-                                        on:error={(obj) => {obj.target.src=`${uriHeaderWD}/static/img/alpha.png`}}
-                                    />
-                                </div>
-                                <div>
-                                    <Progress multi>
-                                        <Progress
-                                            bar
-                                            color="success"
-                                            value={(anime.rating /
-                                                anime.votes) *
-                                                20}
-                                        >
-                                            {(
-                                                anime.rating / anime.votes
-                                            ).toFixed(2)}
-                                        </Progress>
-                                        <Progress
-                                            bar
-                                            color="danger"
-                                            value={101 -
-                                                (anime.rating / anime.votes) *
-                                                    20}
-                                        />
+                                <img
+                                    in:fade
+                                    alt="logo"
+                                    src={anime.urlImagePreview}
+                                    style="height: 300px; width: 200px; border-radius: .25rem;filter: unset;"
+                                    on:error={(obj) => {
+                                        obj.target.src = `${uriHeaderWD}/static/img/alpha.png`;
+                                    }}
+                                />
+                                <Progress multi>
+                                    <Progress
+                                        bar
+                                        color="success"
+                                        value={(anime.rating / anime.votes) *
+                                            20}
+                                    >
+                                        {(anime.rating / anime.votes).toFixed(
+                                            1
+                                        )}
                                     </Progress>
-                                </div>
+                                    <Progress
+                                        bar
+                                        color="danger"
+                                        value={101 -
+                                            (anime.rating / anime.votes) * 20}
+                                    />
+                                </Progress>
                             </Navigate>
                         </Col>
                         <Col
                             class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 col-12"
                         >
                             <Navigate to={`${uriHeader}/anime/${anime.id}`}>
-                                <h4 in:scale>{anime.title.split("/")[0]}</h4>
+                                <h4 in:scale>
+                                    {anime.title.split("/")[0]}
+                                </h4>
                             </Navigate>
-                            <div>
-                                <h5>
-                                    {anime.type} / {anime.year} /
-                                    {#each anime.genre.split(",") as gen}
-                                        <Badge class="me-2 mb-1 mt-1" primary>
-                                            {gen.trim()}
-                                        </Badge>
-                                    {/each} 
-                                    / {anime.title.split("[")[1].split("]")[0]}
-                                </h5>
-
-                                    {@html anime.description.slice(0, 200)}...
-
-                            </div>
+                            <h5>
+                                {anime.type} / {anime.year} /
+                                {#each anime.genre.split(",") as gen}
+                                    <Badge class="me-2 mb-1 mt-1" primary>
+                                        {gen.trim()}
+                                    </Badge>
+                                {/each}
+                                / {anime.title.split("[")[1].split("]")[0]}
+                            </h5>
+                            {@html anime.description.slice(0, 200)}...
                         </Col>
                     </Row>
                 </Col>
@@ -80,3 +79,19 @@
 {:else}
     <Loading />
 {/if}
+
+<style>
+    .imagebackground {
+        border-radius: 0.25rem;
+        filter: blur(5px);
+        position: absolute;
+        height: 314px;
+        width: 220px;
+        z-index: -1;
+    }
+    @media screen and (max-width: 576px) {
+        .imagebackground {
+            width: 100%;
+        }
+    }
+</style>
