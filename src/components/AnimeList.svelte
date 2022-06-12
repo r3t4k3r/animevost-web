@@ -89,7 +89,7 @@
         width: 220px;
         z-index: -1;
     }
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 575px) {
         .imagebackground {
             width: 100%;
         }
