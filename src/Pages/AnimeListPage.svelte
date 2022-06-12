@@ -14,7 +14,7 @@
 
     async function getAnimes() {
         const response = await fetch(
-            `${apiUrl}/last?page=${page}&quantity=10`,
+            `${apiUrl}/last?page=${page}&quantity=8`,
             {
                 mode: "cors", // 'cors' by default
             }
@@ -24,14 +24,14 @@
     }
 </script>
 
-<AnimeList animes={animes} />
+<AnimeList {animes} />
 
 <InfiniteScroll
     hasMore={animes.length}
-    threshold={1800}
+    threshold={200}
     window="true"
     on:loadMore={async () => {
-        page++;
+        page += 1;
         const data = await getAnimes();
         animes = [...animes, ...data];
     }}
