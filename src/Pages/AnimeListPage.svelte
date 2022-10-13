@@ -14,7 +14,7 @@
 
     async function getAnimes() {
         const response = await fetch(
-            `${apiUrl}/last?page=${page}&quantity=8`,
+            `${apiUrl}/last?page=${page}&quantity=10`,
             {
                 mode: "cors", // 'cors' by default
             }
