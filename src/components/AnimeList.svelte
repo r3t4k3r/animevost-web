@@ -1,5 +1,5 @@
 <script>
-    import { Row, Col, Image, Badge, Progress } from "sveltestrap";
+    import { Row, Col, Spinner, Badge, Progress } from "sveltestrap";
     import Loading from "./Loading.svelte";
     import { Navigate } from "svelte-router-spa";
     import { uriHeader, uriHeaderWD } from "../config";
@@ -74,6 +74,7 @@
                     </Row>
                 </Col>
             {/each}
+            <div style="text-align: center;"><Spinner color="primary" /></div>
         </Row>
     </div>
 {:else}
