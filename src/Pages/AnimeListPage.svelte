@@ -24,7 +24,7 @@
     }
 </script>
 
-<AnimeList {animes} />
+<AnimeList hasSpinner={true} {animes} />
 
 <InfiniteScroll
     hasMore={animes.length}

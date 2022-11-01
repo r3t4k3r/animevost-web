@@ -5,6 +5,7 @@
     import { uriHeader, uriHeaderWD } from "../config";
     import { fade, scale } from "svelte/transition";
     export let animes;
+    export let hasSpinner = false;
 </script>
 
 {#if animes.length > 0}
@@ -74,7 +75,11 @@
                     </Row>
                 </Col>
             {/each}
-            <div style="text-align: center;"><Spinner color="primary" /></div>
+            {#if hasSpinner}
+                <div style="text-align: center;">
+                    <Spinner color="primary" />
+                </div>
+            {/if}
         </Row>
     </div>
 {:else}
