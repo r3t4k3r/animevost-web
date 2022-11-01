@@ -143,7 +143,3 @@ vm-player[audio] {
   --vm-settings-max-height: 200px;
   --vm-tooltip-spacing: 10px
 }
-
-::-webkit-scrollbar {
-  width: 0;
-}
