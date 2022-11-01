@@ -38,30 +38,6 @@
     }
 </script>
 
-<div class="nbar">
-    <ul class="navbar">
-        <li>
-            <div on:click={() => navigateTo(`${uriHeader}/`)}>
-                <div class="icon"><Icon name="house" /></div>
-                Главная
-            </div>
-        </li>
-        <li>
-            <div on:click={() => navigateTo(`${uriHeader}/schedule`)}>
-                <div class="icon"><Icon name="card-list" /></div>
-                Расписание
-            </div>
-        </li>
-        <li>
-            <div on:click={() => navigateTo(`${uriHeader}/about`)}>
-                <div class="icon"><Icon name="info-circle" /></div>
-                О сайте
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="navbar-desktop">
 <Navbar color="dark" dark class="sticky-top" expand="md">
     <NavbarBrand href={`/${uriHeader}`}>
         <Icon name="house" />
@@ -93,7 +69,8 @@
         </Nav>
     </Collapse>
 </Navbar>
-</div>
+
+
 <Modal isOpen={modalOpen} toggle={toggleModal}>
     <ModalHeader {toggleModal}>О сайте</ModalHeader>
     <ModalBody>
@@ -119,41 +96,3 @@
         <Button color="secondary" on:click={toggleModal}>Закрыть</Button>
     </ModalFooter>
 </Modal>
-<div style="margin-bottom: 3em" />
-<style>
-
-    .nbar {
-        position: fixed;
-        bottom: 0; /* Position the navbar at the top of the page */
-        width: 100%; /* Full width */
-        display: none;
-        z-index: 100;
-    }
-    .navbar {
-        background-color: rgb(59,59,59);
-        margin: 0px;
-    }
-    .navbar-desktop {
-        display: block;
-    }
-    li {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 0 16px;
-        text-decoration: none;
-        font-size: 13px;
-        list-style-type: none; /* Убираем маркеры */
-        z-index: 101;
-        cursor: pointer;
-    }
-    .icon {
-        display: block;
-        font-size: 20px;
-    }
-    ul {
-        padding-left: 0; /* Сдвигаем список влево */
-    }
-
-</style>
