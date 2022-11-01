@@ -143,3 +143,15 @@ vm-player[audio] {
   --vm-settings-max-height: 200px;
   --vm-tooltip-spacing: 10px
 }
+
+.bg-secondary {
+  background-color: var(--bs-gray-800);
+}
+
+.bg-danger {
+  background-color: #27405a;
+}
+
+.bg-dark {
+  background-color: var(--bs-gray-800);
+}
