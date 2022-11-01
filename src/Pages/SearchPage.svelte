@@ -26,7 +26,7 @@
                 body: `name=${name}`,
             });
             const json = await response.json();
-            animeFound = true;
+            animeFound = "error" in json.data ? false : true
             return json.data;
         } catch (e) {
             animeFound = false;
