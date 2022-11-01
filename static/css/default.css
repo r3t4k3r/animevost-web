@@ -155,3 +155,8 @@ vm-player[audio] {
 .bg-dark {
   background-color: var(--bs-gray-800);
 }
+
+.progress-bar {
+  color: white;
+  font-family: sans-serif;
+}
