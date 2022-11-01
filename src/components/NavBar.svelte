@@ -42,19 +42,19 @@
     <ul class="navbar">
         <li>
             <div on:click={() => navigateTo(`${uriHeader}/`)}>
-                <span class="icon"><Icon name="house" /></span>
+                <div class="icon"><Icon name="house" /></div>
                 Главная
             </div>
         </li>
         <li>
             <div on:click={() => navigateTo(`${uriHeader}/schedule`)}>
-                <span class="icon"><Icon name="card-list" /></span>
+                <div class="icon"><Icon name="card-list" /></div>
                 Расписание
             </div>
         </li>
         <li>
             <div on:click={() => navigateTo(`${uriHeader}/about`)}>
-                <span class="icon"><Icon name="info-circle" /></span>
+                <div class="icon"><Icon name="info-circle" /></div>
                 О сайте
             </div>
         </li>
@@ -98,11 +98,12 @@
     <ModalHeader {toggleModal}>О сайте</ModalHeader>
     <ModalBody>
         Исходный код: <a
+            rel="noreferrer"
             target="_blank"
             href="https://github.com/r3t4k3r/animevost-web">тут</a
         ><br />
-        Спасибо: <a target="_blank" href="https://animevost.org">Animevost</a> и
-        <a target="_blank" href="https://alpha1918.moe/">Альфа 1918</a><br /><br
+        Спасибо: <a target="_blank" rel="noreferrer" href="https://animevost.org">Animevost</a> и
+        <a target="_blank" rel="noreferrer" href="https://alpha1918.moe/">Альфа 1918</a><br /><br
         />
         <div class="d-flex justify-content-center">
             <img
@@ -155,30 +156,4 @@
         padding-left: 0; /* Сдвигаем список влево */
     }
 
-    @media (max-width: 768px) {
-        .navbar-desktop {
-            display: none;
-        }
-        .nbar {
-            display: block;
-        }
-        li {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 0 16px;
-            text-decoration: none;
-            font-size: 13px;
-            list-style-type: none; /* Убираем маркеры */
-            z-index: 101;
-        }
-        .icon {
-            display: block;
-            font-size: 20px;
-        }
-        ul {
-            padding-left: 0; /* Сдвигаем список влево */
-        }
-    }
 </style>
