@@ -88,6 +88,7 @@
 
 <style>
     .imagebackground {
+        display: none;
         border-radius: 0.25rem;
         filter: blur(5px);
         position: absolute;
@@ -97,6 +98,7 @@
     }
     @media screen and (max-width: 575px) {
         .imagebackground {
+            display: block;
             width: 100%;
         }
     }
