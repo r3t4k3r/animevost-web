@@ -63,14 +63,14 @@
                             </Navigate>
                             <h5>
                                 {anime.type} / {anime.year} /
+                                {anime.title.split("[")[1].split("]")[0]} /
                                 {#each anime.genre.split(",") as gen}
                                     <Badge class="me-2 mb-1 mt-1" primary>
                                         {gen.trim()}
                                     </Badge>
                                 {/each}
-                                / {anime.title.split("[")[1].split("]")[0]}
                             </h5>
-                            {@html anime.description.slice(0, 200)}...
+                            {@html anime.description.slice(0, 150)}...
                         </Col>
                     </Row>
                 </Col>
