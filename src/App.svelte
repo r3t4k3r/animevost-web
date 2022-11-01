@@ -7,6 +7,8 @@
 
 <NavBar />
 
-<Container>
-	<Router {routes} />
-</Container>
+<div style="margin-top: 3rem">
+	<Container>
+		<Router {routes} />
+	</Container>
+</div>
