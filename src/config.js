@@ -3,5 +3,5 @@ const myPathToPage = "animevost-web" // корневой юрл если адр�
 
 const uriHeader = localHostnames.includes(location.hostname) ? "" : myPathToPage // "animevost-web" for prod or "" for localhost
 const uriHeaderWD = uriHeader === "" ? '' : `/${uriHeader}`
-const apiUrl = "https://fuck-anixart.herokuapp.com/https://api.animetop.info/v1" // https://api.animevost.org/v1
+const apiUrl = "https://api.animetop.info/v1" // https://api.animevost.org/v1
 export { uriHeader, uriHeaderWD, apiUrl }
