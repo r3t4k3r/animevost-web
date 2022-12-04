@@ -165,21 +165,19 @@
             </CardBody>
         </Card>
     {/if}
-    <Card class="mb-3">
-        <CardHeader>
-            <CardTitle>Год выпуска</CardTitle>
-        </CardHeader>
-        <CardBody>
-            <CardText>{animeInfo.year}</CardText>
-        </CardBody>
-    </Card>
-    <Card class="mb-3">
-        <CardHeader>
-            <CardTitle>Жанр</CardTitle>
-        </CardHeader>
+    <Card class="mb-1">
         <CardBody>
             <CardText>
-                <h5>
+                <b>Описание:</b>
+                {@html animeInfo.description}
+            </CardText>
+        </CardBody>
+    </Card>
+    <Card class="mb-1">
+        <CardBody>
+            <CardText>
+                <b>Жанр:</b>
+                <h5 style="display: inline">
                     {#each animeInfo.genre.split(",") as gen}
                         <Badge class="me-2 mb-1 mt-1" primary
                             >{gen.trim()}</Badge
@@ -189,28 +187,24 @@
             </CardText>
         </CardBody>
     </Card>
+    <Card class="mb-1">
+        <CardBody>
+            <CardText>
+                <b>Год выпуска:</b>
+                {animeInfo.year}
+            </CardText>
+        </CardBody>
+    </Card>
     {#if animeInfo.director}
-    <Card class="mb-3">
-        <CardHeader>
-            <CardTitle>Создатель</CardTitle>
-        </CardHeader>
-        <CardBody>
-            <CardText>
-                {animeInfo.director}
-            </CardText>
-        </CardBody>
-    </Card>
+        <Card class="mb-1">
+            <CardBody>
+                <CardText>
+                    <b>Создатель:</b>
+                    {animeInfo.director}
+                </CardText>
+            </CardBody>
+        </Card>
     {/if}
-    <Card class="mb-5">
-        <CardHeader>
-            <CardTitle>Описание</CardTitle>
-        </CardHeader>
-        <CardBody>
-            <CardText>
-                {@html animeInfo.description}
-            </CardText>
-        </CardBody>
-    </Card>
 {:else}
     <Loading />
 {/if}
