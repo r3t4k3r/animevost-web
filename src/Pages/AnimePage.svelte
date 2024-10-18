@@ -96,11 +96,15 @@
                     break;
                 case "ArrowUp":
                     event.preventDefault();
-                    volume += 10;
+                    if (volume <= 90) {
+                        volume += 10;
+                    }
                     break;
                 case "ArrowDown":
                     event.preventDefault();
-                    volume -= 10;
+                    if (volume >= 10) {
+                        volume -= 10;
+                    }
                     break;
                 case "Space":
                     event.preventDefault();
