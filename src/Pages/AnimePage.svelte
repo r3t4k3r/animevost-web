@@ -20,6 +20,7 @@
     let duration = -1;
     let currentTime = 0;
     let paused = true;
+    let volume = 80;
 
     let animeInfo = {};
     let series = [];
@@ -93,6 +94,14 @@
                     event.preventDefault();
                     currentTime = currentTime + 10;
                     break;
+                case "ArrowUp":
+                    event.preventDefault();
+                    volume += 10;
+                    break;
+                case "ArrowDown":
+                    event.preventDefault();
+                    volume -= 10;
+                    break;
                 case "Space":
                     event.preventDefault();
                     paused = !paused;
@@ -104,10 +113,10 @@
     function seriesHandler(seria) {
         selectedSeria = seria;
     }
-	
+
     function getStd(seria) {
-		return seria.hd !== undefined ? seria.hd : seria.std;
-	}
+        return seria.hd !== undefined ? seria.hd : seria.std;
+    }
 </script>
 
 <svelte:body on:keydown={keydownHandler} />
@@ -128,10 +137,13 @@
                     {currentTime}
                     {duration}
                     {paused}
-                    volume={80}
+                    {volume}
                 >
                     <vm-video>
-                        <source data-src={getStd(selectedSeria)} type="video/mp4" />
+                        <source
+                            data-src={getStd(selectedSeria)}
+                            type="video/mp4"
+                        />
                         <track kind="captions" />
                     </vm-video>
                     <DefaultUi noDblClickFullscreen />
