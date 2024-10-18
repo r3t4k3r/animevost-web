@@ -104,6 +104,10 @@
     function seriesHandler(seria) {
         selectedSeria = seria;
     }
+	
+    function getStd(seria) {
+		return seria.hd !== undefined ? seria.hd : seria.std;
+	}
 </script>
 
 <svelte:body on:keydown={keydownHandler} />
@@ -127,7 +131,7 @@
                     volume={80}
                 >
                     <vm-video>
-                        <source data-src={selectedSeria.std} type="video/mp4" />
+                        <source data-src={getStd(selectedSeria)} type="video/mp4" />
                         <track kind="captions" />
                     </vm-video>
                     <DefaultUi noDblClickFullscreen />
